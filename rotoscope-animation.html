@@ -56,51 +56,9 @@
             flex-direction: column;
         }
 
-        /* Navigation Menu */
-        nav {
-            background: rgba(255, 240, 200, 0.8);
-            border-bottom: 4px dotted #d4845c;
-            padding: 25px 0;
-            box-shadow: 0 4px 15px rgba(212, 132, 92, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #d4845c;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 12px 28px;
-            border: 3px solid #d4845c;
-            border-radius: 30px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-shadow: none;
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        nav a:hover {
-            background: linear-gradient(135deg, #ff9d5c 0%, #ffb347 100%);
-            color: #fff;
-            border-color: #ff9d5c;
-            transform: rotate(-2deg) scale(1.08);
-            box-shadow: 0 8px 20px rgba(255, 157, 92, 0.4);
-        }
-
-        nav a.active {
-            background: linear-gradient(135deg, #ff7b54 0%, #ff9d5c 100%);
-            color: #fff;
-            border-color: #ff7b54;
-            box-shadow: 0 8px 25px rgba(255, 123, 84, 0.5);
+        /* Header Container */
+        #header-container {
+            width: 100%;
         }
 
         /* Main content */
@@ -224,15 +182,9 @@
             }
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #8b6534;
-            border-top: 3px dotted #d4845c;
-            font-size: 12px;
-            position: relative;
-            z-index: 10;
-            background: rgba(255, 240, 200, 0.4);
+        /* Footer Container */
+        #footer-container {
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -243,29 +195,12 @@
             .section h2 {
                 font-size: 22px;
             }
-
-            nav a {
-                font-size: 14px;
-                padding: 10px 18px;
-                border-radius: 20px;
-            }
-
-            nav ul {
-                gap: 15px;
-            }
         }
     </style>
 </head>
 <body>
+    <div id="header-container"></div>
     <container>
-        <nav>
-            <ul>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="3d-animation.html">3D ANIMATION</a></li>
-                <li><a href="rotoscope-animation.html" class="active">ROTOSCOPE ANIMATION</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-            </ul>
-        </nav>
 
         <div class="content">
             <div class="page-container">
@@ -362,26 +297,31 @@
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p>&copy; 2026 MMA PORTFOLIO | RETRO DESIGN | ALL RIGHTS RESERVED</p>
-        </footer>
     </container>
+    <div id="footer-container"></div>
 
     <script>
-        // Set active navigation link based on current page
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('nav a');
-            const currentPage = window.location.pathname.split('/').pop() || 'home.html';
-            
-            links.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
+        // Load header from header.html
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                // Set active nav link after header is loaded
+                const links = document.querySelectorAll('nav a.nav-link');
+                const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+                links.forEach(link => {
+                    if (link.getAttribute('href') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
             });
-        });
+
+        // Load footer from footer.html
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
     </script>
 </body>
 </html>
