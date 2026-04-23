@@ -71,158 +71,74 @@
         }
 
         .page-container {
-            max-width: 1000px;
+            max-width: 600px;
             width: 100%;
             animation: slideIn 0.8s ease-out;
+            text-align: center;
+            background: rgba(255, 182, 193, 0.3);
+            border: 3px dashed #d4845c;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(212, 132, 92, 0.15);
         }
 
-        h1 {
-            font-size: 50px;
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 5px solid #d4845c;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(212, 132, 92, 0.3);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .profile-name {
+            font-size: 36px;
             color: #d4845c;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(212, 132, 92, 0.2);
-            text-align: center;
-            letter-spacing: 3px;
+            margin-bottom: 10px;
             font-weight: 900;
+        }
+
+        .profile-section {
+            font-size: 18px;
+            color: #c75d3b;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px dotted #ff9d5c;
+        }
+
+        .profile-description {
+            color: #8b6534;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .profile-content-title {
+            font-size: 22px;
+            color: #d4845c;
+            margin-bottom: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .website-contents {
+            text-align: left;
+            color: #8b6534;
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .website-contents li {
+            list-style-position: inside;
+            margin-bottom: 8px;
         }
 
         .section {
-            background: rgba(255, 182, 193, 0.3);
-            border: 3px dashed #d4845c;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(212, 132, 92, 0.15);
-            transition: all 0.4s ease;
-            border-radius: 20px;
-        }
-
-        .section:hover {
-            background: rgba(255, 179, 71, 0.2);
-            border-color: #ff9d5c;
-            box-shadow: 0 12px 35px rgba(255, 157, 92, 0.35);
-        }
-
-        .section h2 {
-            color: #c75d3b;
-            font-size: 28px;
-            margin-bottom: 15px;
-            border-bottom: 3px dotted #ff9d5c;
-            padding-bottom: 10px;
-        }
-
-        .section p {
-            color: #8b6534;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .info-block {
-            background: rgba(255, 179, 71, 0.1);
-            border-left: 5px solid #ff9d5c;
-            padding: 20px;
-            transition: all 0.4s ease;
-            border-radius: 10px;
-        }
-
-        .info-block:hover {
-            background: rgba(255, 179, 71, 0.2);
-            box-shadow: 0 8px 20px rgba(255, 157, 92, 0.3);
-        }
-
-        .info-block h3 {
-            color: #d4845c;
-            margin-bottom: 10px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .info-block p {
-            color: #8b6534;
-            font-size: 14px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .skill-item {
-            background: linear-gradient(135deg, #ffb347 0%, #ffa726 100%);
-            border: none;
-            padding: 12px;
-            text-align: center;
-            color: #fff;
-            transition: all 0.4s ease;
-            font-weight: bold;
-            border-radius: 10px;
-        }
-
-        .skill-item:hover {
-            background: linear-gradient(135deg, #ff9d5c 0%, #ff8c42 100%);
-            box-shadow: 0 8px 20px rgba(255, 157, 92, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-
-        .timeline-year {
-            color: #d4845c;
-            font-weight: 900;
-            min-width: 80px;
-            font-size: 18px;
-        }
-
-        .timeline-content {
-            color: #8b6534;
-            flex: 1;
-        }
-
-        .timeline-content strong {
-            color: #c75d3b;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            background: linear-gradient(135deg, #ffb347 0%, #ffa726 100%);
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .social-btn:hover {
-            background: linear-gradient(135deg, #ff9d5c 0%, #ff8c42 100%);
-            box-shadow: 0 8px 20px rgba(255, 157, 92, 0.4);
-            transform: translateY(-3px);
+            display: none;
         }
 
         @keyframes slideIn {
@@ -251,20 +167,17 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
+            .page-container {
+                padding: 40px 25px;
             }
 
-            .section h2 {
-                font-size: 22px;
+            .profile-name {
+                font-size: 28px;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .profile-image {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -275,116 +188,20 @@
 
         <div class="content">
             <div class="page-container">
-                <h1>> ABOUT ME</h1>
-
-                <div class="section">
-                    <h2>Welcome</h2>
-                    <p>
-                        I'm a passionate animator and digital artist specializing in 3D animation, rotoscope animation, 
-                        and visual effects. With years of experience in the animation industry, I've worked on diverse 
-                        projects ranging from character animation to complex VFX sequences.
-                    </p>
-                    <p>
-                        This portfolio showcases my technical skills, creative vision, and commitment to producing 
-                        high-quality animation work. I'm always excited to collaborate on new projects and push the 
-                        boundaries of what's possible in animation and motion design.
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h2>Core Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">3D Modeling</div>
-                        <div class="skill-item">Character Animation</div>
-                        <div class="skill-item">Rotoscoping</div>
-                        <div class="skill-item">VFX Design</div>
-                        <div class="skill-item">Motion Graphics</div>
-                        <div class="skill-item">Compositing</div>
-                        <div class="skill-item">Digital Painting</div>
-                        <div class="skill-item">Rigging</div>
-                        <div class="skill-item">Lighting</div>
-                        <div class="skill-item">rendering</div>
-                        <div class="skill-item">Adobe Suite</div>
-                        <div class="skill-item">Blender</div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2>Education & Experience</h2>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-year">2024-2026</div>
-                            <div class="timeline-content">
-                                <strong>Senior Animator</strong> - Premier Animation Studios<br>
-                                Led animation teams on high-profile projects. Specialized in character rigging and motion capture integration.
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-year">2022-2024</div>
-                            <div class="timeline-content">
-                                <strong>3D Artist & Animator</strong> - Digital Media Productions<br>
-                                Created 3D animations, visual effects, and motion graphics for commercial and entertainment projects.
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-year">2020-2022</div>
-                            <div class="timeline-content">
-                                <strong>Jr. Rotoscope Artist</strong> - Post-Production House<br>
-                                Performed frame-by-frame rotoscoping, compositing, and digital painting for film and TV.
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-year">2018-2020</div>
-                            <div class="timeline-content">
-                                <strong>Animation Degree</strong> - Digital Arts Institute<br>
-                                Completed comprehensive training in animation, 3D modeling, and digital media production.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2>Software & Tools</h2>
-                    <div class="about-content">
-                        <div class="info-block">
-                            <h3>3D & Animation</h3>
-                            <p>
-                                • Blender<br>
-                                • Maya<br>
-                                • Cinema 4D<br>
-                                • Unreal Engine<br>
-                                • Houdini
-                            </p>
-                        </div>
-                        <div class="info-block">
-                            <h3>Compositing & Post</h3>
-                            <p>
-                                • After Effects<br>
-                                • Nuke<br>
-                                • Silhouette<br>
-                                • Mocha Pro<br>
-                                • Photoshop
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2>Let's Connect</h2>
-                    <p style="text-align: center; margin-bottom: 20px;">
-                        I'm always interested in discussing new projects, creative opportunities, and collaborations. 
-                        Feel free to reach out!
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-btn">EMAIL</a>
-                        <a href="#" class="social-btn">LINKEDIN</a>
-                        <a href="#" class="social-btn">PORTFOLIO</a>
-                        <a href="#" class="social-btn">GITHUB</a>
-                    </div>
-                </div>
+                <img src="https://via.placeholder.com/180?text=Your+Photo" alt="Profile Picture" class="profile-image">
+                <h1 class="profile-name">Fritzie Ann L. Cadao</h1>
+                <div class="profile-section">BSIT-NS-2A-T</div>
+                <p class="profile-description">
+                    Welcome to my MMA Portfolio website! I'm a student passionate about animation and digital design. 
+                    This portfolio showcases my work in animation, design projects, and creative endeavors.
+                </p>
+                <h2 class="profile-content-title">Website Contents</h2>
+                <ul class="website-contents">
+                    <li><strong>HOME</strong> - Your main landing page with an overview of the portfolio</li>
+                    <li><strong>3D ANIMATION</strong> - Explore my 3D animation projects and visual effects work</li>
+                    <li><strong>ROTOSCOPE ANIMATION</strong> - Discover frame-by-frame animation techniques and projects</li>
+                    <li><strong>ABOUT</strong> - Learn more about me and my background (you are here!)</li>
+                </ul>
             </div>
         </div>
     </container>
