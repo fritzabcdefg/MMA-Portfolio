@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - MMA Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a0a2e 100%);
+            color: #00ff88;
+            overflow: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Retro scanlines effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Grid background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background: rgba(15, 10, 40, 0.95);
+            border-bottom: 3px solid #ff00ff;
+            padding: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #00ff88;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #00ff88;
+            color: #0f0f1e;
+            box-shadow: 0 0 20px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.5);
+            transform: scale(1.05);
+            text-shadow: none;
+        }
+
+        nav a.active {
+            background: #ff00ff;
+            color: #fff;
+            border-color: #ff00ff;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        /* Main content */
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .page-container {
+            max-width: 1000px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #ff00ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.5);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            background: rgba(255, 0, 255, 0.1);
+            border: 2px solid #00ff88;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .section h2 {
+            color: #00ffff;
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ff00ff;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            color: #00ff88;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-block {
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 4px solid #ff00ff;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-block:hover {
+            background: rgba(255, 0, 255, 0.15);
+            box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        .info-block h3 {
+            color: #ff00ff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-block p {
+            color: #00ffff;
+            font-size: 14px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background: rgba(255, 0, 255, 0.2);
+            border: 1px solid #00ff88;
+            padding: 12px;
+            text-align: center;
+            color: #00ff88;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 255, 136, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .timeline-year {
+            color: #ff00ff;
+            font-weight: bold;
+            min-width: 80px;
+            font-size: 18px;
+        }
+
+        .timeline-content {
+            color: #00ff88;
+            flex: 1;
+        }
+
+        .timeline-content strong {
+            color: #00ffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-btn:hover {
+            background: #00ff88;
+            color: #0f0f1e;
+            box-shadow: 0 0 20px #00ff88;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #00ff88;
+            border-top: 2px solid #00ff88;
+            font-size: 12px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <container>
+        <nav>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="3d-animation.html">3D ANIMATION</a></li>
+                <li><a href="rotoscope-animation.html">ROTOSCOPE ANIMATION</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="page-container">
+                <h1>> ABOUT ME</h1>
+
+                <div class="section">
+                    <h2>Welcome</h2>
+                    <p>
+                        I'm a passionate animator and digital artist specializing in 3D animation, rotoscope animation, 
+                        and visual effects. With years of experience in the animation industry, I've worked on diverse 
+                        projects ranging from character animation to complex VFX sequences.
+                    </p>
+                    <p>
+                        This portfolio showcases my technical skills, creative vision, and commitment to producing 
+                        high-quality animation work. I'm always excited to collaborate on new projects and push the 
+                        boundaries of what's possible in animation and motion design.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Core Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">3D Modeling</div>
+                        <div class="skill-item">Character Animation</div>
+                        <div class="skill-item">Rotoscoping</div>
+                        <div class="skill-item">VFX Design</div>
+                        <div class="skill-item">Motion Graphics</div>
+                        <div class="skill-item">Compositing</div>
+                        <div class="skill-item">Digital Painting</div>
+                        <div class="skill-item">Rigging</div>
+                        <div class="skill-item">Lighting</div>
+                        <div class="skill-item">rendering</div>
+                        <div class="skill-item">Adobe Suite</div>
+                        <div class="skill-item">Blender</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Education & Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024-2026</div>
+                            <div class="timeline-content">
+                                <strong>Senior Animator</strong> - Premier Animation Studios<br>
+                                Led animation teams on high-profile projects. Specialized in character rigging and motion capture integration.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022-2024</div>
+                            <div class="timeline-content">
+                                <strong>3D Artist & Animator</strong> - Digital Media Productions<br>
+                                Created 3D animations, visual effects, and motion graphics for commercial and entertainment projects.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020-2022</div>
+                            <div class="timeline-content">
+                                <strong>Jr. Rotoscope Artist</strong> - Post-Production House<br>
+                                Performed frame-by-frame rotoscoping, compositing, and digital painting for film and TV.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2018-2020</div>
+                            <div class="timeline-content">
+                                <strong>Animation Degree</strong> - Digital Arts Institute<br>
+                                Completed comprehensive training in animation, 3D modeling, and digital media production.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Software & Tools</h2>
+                    <div class="about-content">
+                        <div class="info-block">
+                            <h3>3D & Animation</h3>
+                            <p>
+                                • Blender<br>
+                                • Maya<br>
+                                • Cinema 4D<br>
+                                • Unreal Engine<br>
+                                • Houdini
+                            </p>
+                        </div>
+                        <div class="info-block">
+                            <h3>Compositing & Post</h3>
+                            <p>
+                                • After Effects<br>
+                                • Nuke<br>
+                                • Silhouette<br>
+                                • Mocha Pro<br>
+                                • Photoshop
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Let's Connect</h2>
+                    <p style="text-align: center; margin-bottom: 20px;">
+                        I'm always interested in discussing new projects, creative opportunities, and collaborations. 
+                        Feel free to reach out!
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn">EMAIL</a>
+                        <a href="#" class="social-btn">LINKEDIN</a>
+                        <a href="#" class="social-btn">PORTFOLIO</a>
+                        <a href="#" class="social-btn">GITHUB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 MMA PORTFOLIO | RETRO DESIGN | ALL RIGHTS RESERVED</p>
+        </footer>
+    </container>
+
+    <script>
+        // Set active navigation link based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('nav a');
+            const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+            
+            links.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
