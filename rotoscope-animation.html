@@ -129,6 +129,37 @@
             transform: translateX(6px);
         }
 
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .weekly-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(244, 194, 194, 0.18);
+            padding: 16px;
+            border-radius: 18px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .weekly-card .project-title {
+            color: #f4c2c2;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        .weekly-card .responsive-iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
+            border: 1px solid rgba(244, 194, 194, 0.18);
+        }
+
         .project-title {
             color: #f4c2c2;
             font-weight: 900;
@@ -215,179 +246,62 @@
 
                 <div class="section">
                     <h2>Weekly Progress</h2>
-                    
-                    <div class="project-item">
-                        <div class="project-title"> Week 1 </div>
-                        <div class="project-desc">
-                            Full rotoscope sequence with hand-drawn animation elements integrated into live-action footage. 
-                            Includes detailed character animation and environmental design.
+                    <div class="weekly-grid">
+                        <div class="weekly-card">
+                            <div class="project-title">Week 1</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="tech-tags">
-                            <span class="tag">Character Roto</span>
-                            <span class="tag">Masking</span>
-                            <span class="tag">Fill</span>
-                            <span class="tag">Stroke</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 2</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 2 </div>
-                        <div class="project-desc">
-                            Frame-by-frame digital painting over live-action sequences, creating artistic visual effects 
-                            and stylized animation overlays.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 3</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Digital Painting</span>
-                            <span class="tag">Rotoscope</span>
-                            <span class="tag">Effects</span>
-                            <span class="tag">Stylization</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 4</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 3</div>
-                        <div class="project-desc">
-                            Detailed character rotoscoping with frame-accurate masking and advanced compositing techniques 
-                            for film and television post-production.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 5</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Character Roto</span>
-                            <span class="tag">Masking</span>
-                            <span class="tag">Compositing</span>
-                            <span class="tag">Post-Production</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 6</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 4 </div>
-                        <div class="project-desc">
-                            Advanced rotoscoping techniques with motion tracking and stabilization for complex scenes.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 7</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Motion Tracking</span>
-                            <span class="tag">Stabilization</span>
-                            <span class="tag">Rotoscope</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 8</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 5 </div>
-                        <div class="project-desc">
-                            Integration of chroma keying with rotoscoping for seamless visual effects.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 9</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Chroma Keying</span>
-                            <span class="tag">VFX</span>
-                            <span class="tag">Integration</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 10</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 6 </div>
-                        <div class="project-desc">
-                            Hand-drawn animation elements combined with live-action rotoscoping.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 11</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Hand-Drawn</span>
-                            <span class="tag">Animation</span>
-                            <span class="tag">Live-Action</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 12</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 7 </div>
-                        <div class="project-desc">
-                            Exploring hybrid animation techniques blending rotoscope with 3D elements.
+                        <div class="weekly-card">
+                            <div class="project-title">Week 13</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tag">Hybrid</span>
-                            <span class="tag">3D</span>
-                            <span class="tag">Animation</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 8 </div>
-                        <div class="project-desc">
-                            Advanced compositing and layering for multi-element rotoscope projects.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Compositing</span>
-                            <span class="tag">Layering</span>
-                            <span class="tag">Multi-Element</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 9 </div>
-                        <div class="project-desc">
-                            Fine-tuning frame accuracy and precision in rotoscoping workflows.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Frame Accuracy</span>
-                            <span class="tag">Precision</span>
-                            <span class="tag">Workflow</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 10 </div>
-                        <div class="project-desc">
-                            Creative stylization and artistic interpretation in rotoscope animation.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Stylization</span>
-                            <span class="tag">Artistic</span>
-                            <span class="tag">Interpretation</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 11 </div>
-                        <div class="project-desc">
-                            Optimizing performance and efficiency in rotoscoping processes.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Performance</span>
-                            <span class="tag">Efficiency</span>
-                            <span class="tag">Optimization</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 12 </div>
-                        <div class="project-desc">
-                            Integrating sound design with rotoscope animation sequences.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Sound Design</span>
-                            <span class="tag">Integration</span>
-                            <span class="tag">Sequences</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 13 </div>
-                        <div class="project-desc">
-                            Final refinements and polishing of rotoscope animation projects.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Refinements</span>
-                            <span class="tag">Polishing</span>
-                            <span class="tag">Final</span>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-title"> Week 14 </div>
-                        <div class="project-desc">
-                            Complete project compilation and presentation of the 14-week rotoscope journey.
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tag">Compilation</span>
-                            <span class="tag">Presentation</span>
-                            <span class="tag">Journey</span>
+                        <div class="weekly-card">
+                            <div class="project-title">Week 14</div>
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/JGV1Dyuiw9c?si=azjP5uWA5n2DdgcF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
