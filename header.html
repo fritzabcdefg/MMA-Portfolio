@@ -10,10 +10,9 @@
 <style>
     /* Navigation Menu */
     nav {
-        background: rgba(255, 240, 200, 0.8);
-        border-bottom: 4px dotted #d4845c;
-        padding: 25px 0;
-        box-shadow: 0 4px 15px rgba(212, 132, 92, 0.2);
+        background: rgba(0, 0, 0, 0.75);
+        border-bottom: 1px solid rgba(244, 194, 194, 0.25);
+        padding: 22px 0;
         backdrop-filter: blur(10px);
         position: relative;
         z-index: 10;
@@ -23,38 +22,38 @@
         list-style: none;
         display: flex;
         justify-content: center;
-        gap: 25px;
+        gap: 22px;
         flex-wrap: wrap;
     }
 
     nav a {
-        color: #d4845c;
+        color: #f4c2c2;
         text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 12px 28px;
-        border: 3px solid #d4845c;
-        border-radius: 30px;
-        transition: all 0.4s ease;
+        font-size: 17px;
+        font-weight: 700;
+        padding: 12px 26px;
+        border: 1px solid rgba(244, 194, 194, 0.5);
+        border-radius: 24px;
+        transition: all 0.3s ease;
         cursor: pointer;
-        text-shadow: none;
         display: inline-block;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(244, 194, 194, 0.08);
+        text-shadow: 0 0 8px rgba(244, 194, 194, 0.25);
     }
 
     nav a:hover {
-        background: linear-gradient(135deg, #ff9d5c 0%, #ffb347 100%);
-        color: #fff;
-        border-color: #ff9d5c;
-        transform: rotate(-2deg) scale(1.08);
-        box-shadow: 0 8px 20px rgba(255, 157, 92, 0.4);
+        background: rgba(244, 194, 194, 0.35);
+        color: #100a14;
+        border-color: rgba(244, 194, 194, 0.85);
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(244, 194, 194, 0.22);
     }
 
     nav a.active {
-        background: linear-gradient(135deg, #ff7b54 0%, #ff9d5c 100%);
-        color: #fff;
-        border-color: #ff7b54;
-        box-shadow: 0 8px 25px rgba(255, 123, 84, 0.5);
+        background: #f4c2c2;
+        color: #100a14;
+        border-color: #f4c2c2;
+        box-shadow: 0 10px 25px rgba(244, 194, 194, 0.35);
     }
 
     @media (max-width: 768px) {
@@ -65,7 +64,7 @@
         }
 
         nav ul {
-            gap: 15px;
+            gap: 16px;
         }
     }
 </style>

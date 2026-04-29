@@ -13,61 +13,58 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fffef0 0%, #fff9e6 50%, #ffe8cc 100%);
-            color: #8b6534;
+            background: radial-gradient(circle at top, #100611 0%, #050205 38%, #010001 100%);
+            color: #f4c2c2;
             overflow-y: auto;
             min-height: 100vh;
             position: relative;
         }
 
-        /* Groovy floaty background elements */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 179, 71, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(244, 194, 194, 0.14) 0%, transparent 18%),
+                radial-gradient(circle at 82% 30%, rgba(244, 194, 194, 0.08) 0%, transparent 16%),
+                radial-gradient(circle at 50% 80%, rgba(244, 194, 194, 0.1) 0%, transparent 22%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Hippie flower decoration */
         body::after {
-            content: '🌼';
+            content: '✦';
             position: fixed;
             top: 20px;
-            right: 30px;
-            font-size: 40px;
-            opacity: 0.6;
-            animation: float 3s ease-in-out infinite;
+            right: 28px;
+            font-size: 34px;
+            color: rgba(244, 194, 194, 0.35);
+            opacity: 0.8;
+            animation: drift 12s linear infinite;
             pointer-events: none;
-            z-index: 10;
+            z-index: 0;
         }
 
         container {
             position: relative;
-            z-index: 10;
+            z-index: 1;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header Container */
         #header-container {
             width: 100%;
         }
 
-        /* Main content */
         .content {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .page-container {
@@ -78,69 +75,69 @@
 
         h1 {
             font-size: 50px;
-            color: #d4845c;
+            color: #f4c2c2;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(212, 132, 92, 0.2);
+            text-shadow: 0 0 20px rgba(244, 194, 194, 0.35);
             text-align: center;
             letter-spacing: 3px;
             font-weight: 900;
         }
 
         .section {
-            background: rgba(255, 182, 193, 0.3);
-            border: 3px dashed #d4845c;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(244, 194, 194, 0.25);
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(212, 132, 92, 0.15);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
             transition: all 0.4s ease;
-            border-radius: 20px;
+            border-radius: 24px;
         }
 
         .section:hover {
-            background: rgba(255, 179, 71, 0.2);
-            border-color: #ff9d5c;
-            box-shadow: 0 12px 35px rgba(255, 157, 92, 0.35);
+            background: rgba(244, 194, 194, 0.08);
+            border-color: rgba(244, 194, 194, 0.45);
+            box-shadow: 0 20px 50px rgba(244, 194, 194, 0.12);
         }
 
         .section h2 {
-            color: #c75d3b;
+            color: #f4c2c2;
             font-size: 28px;
             margin-bottom: 15px;
-            border-bottom: 3px dotted #ff9d5c;
+            border-bottom: 1px solid rgba(244, 194, 194, 0.3);
             padding-bottom: 10px;
         }
 
         .section p {
-            color: #8b6534;
+            color: #f8d8e1;
             line-height: 1.8;
             margin-bottom: 10px;
             font-size: 16px;
         }
 
         .project-item {
-            background: rgba(255, 179, 71, 0.1);
-            border-left: 5px solid #ff9d5c;
-            padding: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 4px solid #f4c2c2;
+            padding: 18px;
             margin: 15px 0;
             transition: all 0.4s ease;
-            border-radius: 10px;
+            border-radius: 16px;
         }
 
         .project-item:hover {
-            background: rgba(255, 179, 71, 0.2);
-            box-shadow: 0 8px 20px rgba(255, 157, 92, 0.3);
-            transform: translateX(8px);
+            background: rgba(244, 194, 194, 0.08);
+            box-shadow: 0 12px 30px rgba(244, 194, 194, 0.15);
+            transform: translateX(6px);
         }
 
         .project-title {
-            color: #d4845c;
+            color: #f4c2c2;
             font-weight: 900;
             font-size: 18px;
             margin-bottom: 8px;
         }
 
         .project-desc {
-            color: #8b6534;
+            color: #f8d8e1;
             font-size: 14px;
         }
 
@@ -152,12 +149,10 @@
         }
 
         .tag {
-            background: linear-gradient(135deg, #ffb347 0%, #ffa726 100%);
-            color: #fff;
+            background: rgba(244, 194, 194, 0.2);
+            color: #f4c2c2;
             padding: 5px 12px;
             font-size: 12px;
-            border: none;
-            display: inline-block;
             border-radius: 15px;
             font-weight: bold;
         }
@@ -173,16 +168,15 @@
             }
         }
 
-        @keyframes float {
+        @keyframes drift {
             0%, 100% {
-                transform: translateY(0px);
+                transform: translateY(0) rotate(0deg);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-16px) rotate(6deg);
             }
         }
 
-        /* Footer Container */
         #footer-container {
             width: 100%;
         }
