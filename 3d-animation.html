@@ -129,6 +129,41 @@
             transform: translateX(6px);
         }
 
+        .planet-row {
+            display: grid;
+            grid-template-columns: minmax(260px, 560px) minmax(220px, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .planet-video {
+            width: 100%;
+            max-width: 560px;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(244, 194, 194, 0.18);
+        }
+
+        .planet-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .planet-data {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            color: #f8d8e1;
+            display: grid;
+            gap: 10px;
+        }
+
+        .planet-data li {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
         .project-title {
             color: #f4c2c2;
             font-weight: 900;
@@ -189,6 +224,10 @@
             .section h2 {
                 font-size: 22px;
             }
+
+            .planet-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -206,48 +245,193 @@
                 </div>
 
                 <div class="section">
-                    <h2>Per Planet Overview</h2>
+                    <h2>Planet Overview</h2>
                     <div class="project-item">
-                        <div class="project-title">Sun</div>
-                        <div class="project-desc">The central star of our system, powering the planets with light, heat, and solar activity.</div>
-                        <video src="videos/Sun.mkv" loop autoplay muted width="560" height="315"></video>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Sun.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Sun</div>
+                                    <div class="project-desc">The central star of our system, powering the planets with light, heat, and solar activity.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.6 billion years</li>
+                                    <li><strong>Revolution:</strong> Orbits the Milky Way every ~225 million years</li>
+                                    <li><strong>Orbital Period:</strong> N/A</li>
+                                    <li><strong>Distance from Sun:</strong> 0 km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Mercury</div>
-                        <div class="project-desc">A small, rocky planet with extreme temperature shifts and a cratered surface.</div>
-                        <video src="videos/Mercury.mkv" loop autoplay muted width="560" height="315"></video>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Mercury.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Mercury</div>
+                                    <div class="project-desc">A small, rocky planet with extreme temperature shifts and a cratered surface.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 88 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 0.24 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 57.9 million km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Venus</div>
-                        <div class="project-desc">A bright, cloud-covered world with a thick atmosphere and intense greenhouse effect.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Venus.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Venus</div>
+                                    <div class="project-desc">A bright, cloud-covered world with a thick atmosphere and intense greenhouse effect.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 225 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 0.62 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 108.2 million km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Earth</div>
-                        <div class="project-desc">Our home planet, with oceans, landmasses, and dynamic weather systems.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Earth.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Earth</div>
+                                    <div class="project-desc">Our home planet, with oceans, landmasses, and dynamic weather systems.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.54 billion years</li>
+                                    <li><strong>Revolution:</strong> 365 days</li>
+                                    <li><strong>Orbital Period:</strong> 1 Earth year</li>
+                                    <li><strong>Distance from Sun:</strong> 149.6 million km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Mars</div>
-                        <div class="project-desc">The red planet, known for its dusty terrain, ancient riverbeds, and polar ice caps.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Moon.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Moon</div>
+                                    <div class="project-desc">Earth's natural satellite, with cratered highlands and a thin exosphere.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.51 billion years</li>
+                                    <li><strong>Revolution:</strong> 27.3 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 27.3 Earth days</li>
+                                    <li><strong>Distance from Earth:</strong> 384,400 km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Jupiter</div>
-                        <div class="project-desc">A gas giant with swirling storms, including the Great Red Spot, and many moons.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Mars.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Mars</div>
+                                    <div class="project-desc">The red planet, known for its dusty terrain, ancient riverbeds, and polar ice caps.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.6 billion years</li>
+                                    <li><strong>Revolution:</strong> 687 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 1.88 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 227.9 million km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Saturn</div>
-                        <div class="project-desc">Famous for its ring system, Saturn is a gas giant with icy rings and a striking appearance.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Jupiter.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Jupiter</div>
+                                    <div class="project-desc">A gas giant with swirling storms, including the Great Red Spot, and many moons.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.6 billion years</li>
+                                    <li><strong>Revolution:</strong> 4,333 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 11.86 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 778.5 million km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Uranus</div>
-                        <div class="project-desc">An ice giant that rotates on its side, with a faint ring system and cold, blue atmosphere.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Saturn.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Saturn</div>
+                                    <div class="project-desc">Famous for its ring system, Saturn is a gas giant with icy rings and a striking appearance.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 10,759 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 29.45 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 1.43 billion km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Neptune</div>
-                        <div class="project-desc">A distant ice giant with strong winds and a deep blue atmosphere, farthest from the Sun.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Uranus.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Uranus</div>
+                                    <div class="project-desc">An ice giant that rotates on its side, with a faint ring system and cold, blue atmosphere.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 30,687 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 84.02 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 2.87 billion km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-item">
-                        <div class="project-title">Pluto</div>
-                        <div class="project-desc">A small icy world in the Kuiper Belt, rich in nitrogen ice and distant dwarf planet charm.</div>
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Neptune.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Neptune</div>
+                                    <div class="project-desc">A distant ice giant with strong winds and a deep blue atmosphere, farthest from the Sun.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 60,190 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 164.8 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 4.50 billion km</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="planet-row">
+                            <video class="planet-video" src="videos/Pluto.mkv" loop autoplay muted></video>
+                            <div class="planet-info">
+                                <div>
+                                    <div class="project-title">Pluto</div>
+                                    <div class="project-desc">A small icy world in the Kuiper Belt, rich in nitrogen ice and distant dwarf planet charm.</div>
+                                </div>
+                                <ul class="planet-data">
+                                    <li><strong>Age:</strong> 4.5 billion years</li>
+                                    <li><strong>Revolution:</strong> 90,560 Earth days</li>
+                                    <li><strong>Orbital Period:</strong> 248 Earth years</li>
+                                    <li><strong>Distance from Sun:</strong> 5.91 billion km</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
@@ -277,6 +461,14 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
+            })
+            .finally(() => {
+                document.querySelectorAll('video.planet-video').forEach(video => {
+                    video.defaultPlaybackRate = 0.75;
+                    video.addEventListener('loadedmetadata', () => {
+                        video.playbackRate = 0.75;
+                    });
+                });
             });
     </script>
 </body>
