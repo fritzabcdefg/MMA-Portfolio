@@ -129,6 +129,69 @@
             transform: translateX(6px);
         }
 
+        .age-calc {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 18px;
+            border: 1px solid rgba(244, 194, 194, 0.18);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .age-calc label {
+            color: #ffe3e7;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .age-input-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .age-calc input {
+            flex: 1;
+            min-width: 160px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(244, 194, 194, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f8d8e1;
+            font-size: 16px;
+        }
+
+        .age-calc button {
+            padding: 12px 20px;
+            border-radius: 14px;
+            border: none;
+            background: #f4c2c2;
+            color: #1b0a12;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .age-calc button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(244, 194, 194, 0.18);
+        }
+
+        .age-error {
+            color: #ffb3b3;
+            font-size: 14px;
+            min-height: 18px;
+        }
+
+        .planet-age {
+            color: #f5e2e5;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
         .planet-row {
             display: grid;
             grid-template-columns: minmax(260px, 560px) minmax(220px, 1fr);
@@ -253,6 +316,14 @@
 
                 <div class="section">
                     <h2>Planet Overview</h2>
+                    <div class="age-calc">
+                        <label for="age-input">Enter your age:</label>
+                        <div class="age-input-row">
+                            <input id="age-input" type="number" min="1" placeholder="e.g. 28" />
+                            <button id="age-submit" type="button">Show planetary ages</button>
+                        </div>
+                        <div id="age-error" class="age-error" aria-live="polite"></div>
+                    </div>
                     <div class="project-item">
                         <div class="planet-row">
                             <video class="planet-video" src="videos/Sun.mkv" loop autoplay muted></video>
@@ -477,6 +548,83 @@
                     });
                 });
             });
+
+        const orbitalRatios = {
+            Sun: 1,
+            Mercury: 0.24,
+            Venus: 0.62,
+            Earth: 1,
+            Moon: 0.074,
+            Mars: 1.88,
+            Jupiter: 11.86,
+            Saturn: 29.45,
+            Uranus: 84.02,
+            Neptune: 164.8,
+            Pluto: 248
+        };
+
+        function clearAgeResults() {
+            document.querySelectorAll('.planet-age').forEach(node => node.remove());
+        }
+
+        function formatAge(age) {
+            return Number(age.toFixed(2));
+        }
+
+        function updatePlanetAges(ageYears) {
+            clearAgeResults();
+
+            document.querySelectorAll('.planet-info').forEach(info => {
+                const titleEl = info.querySelector('.project-title');
+                const descEl = info.querySelector('.project-desc');
+                if (!titleEl || !descEl) return;
+
+                const planetName = titleEl.textContent.trim();
+                const ratio = orbitalRatios[planetName];
+                if (typeof ratio !== 'number') return;
+
+                const ageOnPlanet = formatAge(ageYears / ratio);
+                const resultText = `Your age on ${planetName}: ${ageOnPlanet} ${planetName === 'Moon' ? 'lunar years' : 'years'}`;
+
+                const resultEl = document.createElement('p');
+                resultEl.className = 'planet-age';
+                resultEl.textContent = resultText;
+                descEl.insertAdjacentElement('afterend', resultEl);
+            });
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('age-error');
+            errorEl.textContent = message;
+        }
+
+        function handleAgeInput() {
+            const input = document.getElementById('age-input');
+            const ageValue = input.value.trim();
+            const parsedAge = Number(ageValue);
+
+            if (!ageValue) {
+                showError('Enter your age to see planetary ages.');
+                clearAgeResults();
+                return;
+            }
+
+            if (!Number.isFinite(parsedAge) || parsedAge <= 0 || !Number.isInteger(parsedAge)) {
+                showError('Please enter a valid whole number greater than 0.');
+                clearAgeResults();
+                return;
+            }
+
+            showError('');
+            updatePlanetAges(parsedAge);
+        }
+
+        document.getElementById('age-submit').addEventListener('click', handleAgeInput);
+        document.getElementById('age-input').addEventListener('keyup', event => {
+            if (event.key === 'Enter') {
+                handleAgeInput();
+            }
+        });
     </script>
 </body>
 </html>
