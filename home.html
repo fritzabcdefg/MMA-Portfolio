@@ -90,6 +90,7 @@
             text-shadow: 0 0 28px rgba(205,180,219,0.28);
             letter-spacing: 4px;
             font-weight: 900;
+            animation: pastelPulse 10s ease-in-out infinite alternate;
         }
 
         .subtitle {
@@ -196,6 +197,14 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @keyframes pastelPulse {
+            0% { color: var(--pastel-lavender); text-shadow: 0 0 28px rgba(205,180,219,0.28); }
+            25% { color: var(--pastel-peach); text-shadow: 0 0 28px rgba(255,215,200,0.35); }
+            50% { color: var(--pastel-sky); text-shadow: 0 0 28px rgba(207,233,255,0.35); }
+            75% { color: var(--pastel-mint); text-shadow: 0 0 28px rgba(200,247,214,0.35); }
+            100% { color: var(--pastel-pink); text-shadow: 0 0 28px rgba(244,194,194,0.35); }
         }
 
         @keyframes drift {
