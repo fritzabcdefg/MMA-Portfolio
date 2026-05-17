@@ -158,6 +158,33 @@
             color: #f9d8e0;
             line-height: 1.75;
             font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            font-size: 15px;
+            color: #100a14;
+            background: var(--pastel-peach);
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 800;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+            box-shadow: 0 10px 24px rgba(205,180,219,0.16);
+        }
+
+        .card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(205,180,219,0.24);
+            opacity: 0.95;
+        }
+
+        .card-link span {
+            margin-left: 10px;
+            font-size: 16px;
         }
 
         @keyframes slideIn {
@@ -208,10 +235,12 @@
                     <div class="card">
                         <h3>3D ANIMATION</h3>
                         <p>Scripting 3d animation using Python language to animate the Solar System</p>
+                        <a class="card-link" href="3d-animation.html">View <span>→</span></a>
                     </div>
                     <div class="card">
                         <h3>ROTOSCOPE</h3>
                         <p>Discover detailed frame-by-frame animation techniques</p>
+                        <a class="card-link" href="rotoscope-animation.html">View <span>→</span></a>
                     </div>
                 </div>
             </div>
