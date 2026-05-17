@@ -47,6 +47,7 @@ const orbitalRatios = {
 
 function clearAgeResults() {
     document.querySelectorAll('.planet-age').forEach(node => node.remove());
+    document.querySelectorAll('.age-display').forEach(node => node.remove());
 }
 
 function formatAge(age) {
@@ -68,10 +69,15 @@ function updatePlanetAges(ageYears) {
         const ageOnPlanet = formatAge(ageYears / ratio);
         const resultText = `Your age on ${planetName}: ${ageOnPlanet} ${planetName === 'Moon' ? 'lunar years' : 'years'}`;
 
-        const resultEl = document.createElement('p');
-        resultEl.className = 'planet-age';
-        resultEl.textContent = resultText;
-        descEl.insertAdjacentElement('afterend', resultEl);
+        // create or reuse a dedicated container for the age display
+        let ageContainer = info.querySelector('.age-display');
+        if (!ageContainer) {
+            ageContainer = document.createElement('div');
+            ageContainer.className = 'age-display';
+            descEl.insertAdjacentElement('afterend', ageContainer);
+        }
+
+        ageContainer.innerHTML = `<p class="planet-age" aria-live="polite"><strong>${planetName} —</strong> ${ageOnPlanet} ${planetName === 'Moon' ? 'lunar years' : 'years'}</p>`;
     });
 }
 
