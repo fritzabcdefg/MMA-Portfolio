@@ -36,7 +36,6 @@
         flex-wrap: wrap;
     }
 
-    /* Multicolor pastel outline using dual-background trick */
     nav a {
         position: relative;
         color: var(--pastel-pink);
@@ -48,28 +47,18 @@
         transition: all 0.28s ease;
         cursor: pointer;
         display: inline-block;
-        background: linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)) padding-box,
-                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
-        border: 2px solid transparent;
-        -webkit-backdrop-filter: blur(2px);
-        backdrop-filter: blur(2px);
+        background: transparent;
+        border: 2px solid rgba(244,194,194,0.45);
+        box-shadow: none;
     }
 
-    /* Subtle inner fill and shadow on hover */
-    nav a:hover {
-        color: var(--nav-fg);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 6px 18px rgba(0,0,0,0.25);
-        background: linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.06)) padding-box,
-                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
-    }
-
-    /* Active link gets a brighter inner fill */
+    nav a:hover,
     nav a.active {
-        color: var(--nav-fg);
-        background: linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)) padding-box,
-                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
-        box-shadow: 0 14px 34px rgba(0,0,0,0.5);
+        color: #100a14;
+        background: var(--pastel-pink);
+        border-color: transparent;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(244,194,194,0.25);
     }
 
     /* Make outlines slightly thicker on larger screens */
