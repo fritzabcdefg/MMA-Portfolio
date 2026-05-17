@@ -89,6 +89,8 @@
             text-align: center;
             letter-spacing: 3px;
             font-weight: 900;
+            text-transform: uppercase;
+            animation: pastelPulse 10s ease-in-out infinite alternate;
         }
 
         .section {
@@ -113,6 +115,8 @@
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,215,200,0.18);
             padding-bottom: 10px;
+            text-transform: uppercase;
+            animation: pastelPulse 10s ease-in-out infinite alternate;
         }
 
         .section p {
@@ -169,6 +173,8 @@
             color: var(--pastel-mint);
             font-size: 16px;
             margin-bottom: 8px;
+            text-transform: uppercase;
+            animation: pastelPulse 10s ease-in-out infinite alternate;
         }
 
         .tutorial-step p {
@@ -214,6 +220,8 @@
             font-weight: 900;
             font-size: 18px;
             margin-bottom: 8px;
+            text-transform: uppercase;
+            animation: pastelPulse 10s ease-in-out infinite alternate;
         }
 
         .project-desc {
@@ -254,6 +262,14 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @keyframes pastelPulse {
+            0% { color: var(--pastel-lavender); text-shadow: 0 0 20px rgba(205,180,219,0.28); }
+            25% { color: var(--pastel-peach); text-shadow: 0 0 20px rgba(255,215,200,0.35); }
+            50% { color: var(--pastel-sky); text-shadow: 0 0 20px rgba(207,233,255,0.35); }
+            75% { color: var(--pastel-mint); text-shadow: 0 0 20px rgba(200,247,214,0.35); }
+            100% { color: var(--pastel-pink); text-shadow: 0 0 20px rgba(244,194,194,0.35); }
         }
 
         @keyframes drift {
