@@ -11,10 +11,18 @@
             box-sizing: border-box;
         }
 
+        :root{
+            --pastel-pink: #f4c2c2;
+            --pastel-lavender: #cdb4db;
+            --pastel-mint: #c8f7d6;
+            --pastel-peach: #ffd7c2;
+            --pastel-sky: #cfe9ff;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: radial-gradient(circle at top, #100611 0%, #050205 38%, #010001 100%);
-            color: #f4c2c2;
+            color: var(--pastel-pink);
             overflow-y: auto;
             min-height: 100vh;
             position: relative;
@@ -25,9 +33,9 @@
             position: fixed;
             inset: 0;
             background-image:
-                radial-gradient(circle at 20% 18%, rgba(244, 194, 194, 0.14) 0%, transparent 20%),
-                radial-gradient(circle at 80% 25%, rgba(244, 194, 194, 0.08) 0%, transparent 18%),
-                radial-gradient(circle at 50% 80%, rgba(244, 194, 194, 0.1) 0%, transparent 25%);
+                radial-gradient(circle at 20% 18%, rgba(205,180,219,0.14) 0%, transparent 20%),
+                radial-gradient(circle at 80% 25%, rgba(200,247,214,0.08) 0%, transparent 18%),
+                radial-gradient(circle at 50% 80%, rgba(207,233,255,0.1) 0%, transparent 25%);
             pointer-events: none;
             z-index: 0;
         }
@@ -38,7 +46,7 @@
             top: 20px;
             right: 30px;
             font-size: 30px;
-            color: rgba(244, 194, 194, 0.35);
+            color: rgba(205,180,219,0.35);
             opacity: 0.8;
             animation: drift 12s linear infinite;
             pointer-events: none;
@@ -77,16 +85,16 @@
 
         h1 {
             font-size: 128px;
-            color: #f4c2c2;
+            color: var(--pastel-lavender);
             margin-bottom: 18px;
-            text-shadow: 0 0 28px rgba(244, 194, 194, 0.35);
+            text-shadow: 0 0 28px rgba(205,180,219,0.28);
             letter-spacing: 4px;
             font-weight: 900;
         }
 
         .subtitle {
             font-size: 22px;
-            color: #ffdbea;
+            color: var(--pastel-peach);
             margin-bottom: 40px;
             letter-spacing: 2px;
             font-style: italic;
@@ -98,19 +106,19 @@
             margin: 10px;
             font-size: 18px;
             color: #100a14;
-            background: rgba(244, 194, 194, 0.95);
-            border: 1px solid rgba(244, 194, 194, 0.8);
+            background: var(--pastel-peach);
+            border: 1px solid rgba(255,215,200,0.9);
             cursor: pointer;
             font-weight: 800;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 12px 30px rgba(244, 194, 194, 0.25);
+            box-shadow: 0 12px 30px rgba(205,180,219,0.18);
             border-radius: 28px;
         }
 
         .cta-button:hover {
             transform: translateY(-4px);
-            box-shadow: 0 14px 36px rgba(244, 194, 194, 0.35);
+            box-shadow: 0 14px 36px rgba(205,180,219,0.28);
         }
 
         .grid-container {
@@ -123,7 +131,7 @@
 
         .card {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(244, 194, 194, 0.2);
+            border: 1px solid rgba(205,180,219,0.12);
             padding: 32px;
             text-align: center;
             transition: all 0.35s ease;
@@ -135,12 +143,12 @@
 
         .card:hover {
             transform: translateY(-6px);
-            border-color: rgba(244, 194, 194, 0.45);
-            box-shadow: 0 20px 55px rgba(244, 194, 194, 0.12);
+            border-color: rgba(205,180,219,0.45);
+            box-shadow: 0 20px 55px rgba(205,180,219,0.08);
         }
 
         .card h3 {
-            color: #f4c2c2;
+            color: var(--pastel-pink);
             margin-bottom: 18px;
             font-size: 24px;
             font-weight: 800;

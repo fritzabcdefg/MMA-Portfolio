@@ -8,10 +8,20 @@
 </nav>
 
 <style>
+    :root{
+        --pastel-pink: #f4c2c2;
+        --pastel-lavender: #cdb4db;
+        --pastel-mint: #c8f7d6;
+        --pastel-peach: #ffd7c2;
+        --pastel-sky: #cfe9ff;
+        --nav-bg: rgba(8,8,12,0.88);
+        --nav-fg: rgba(255,255,255,0.95);
+    }
+
     /* Navigation Menu */
     nav {
-        background: rgba(8, 8, 12, 0.88);
-        border-bottom: 1px solid rgba(244, 194, 194, 0.18);
+        background: var(--nav-bg);
+        border-bottom: 1px solid rgba(255,255,255,0.04);
         padding: 18px 0;
         backdrop-filter: blur(12px);
         position: relative;
@@ -26,33 +36,45 @@
         flex-wrap: wrap;
     }
 
+    /* Multicolor pastel outline using dual-background trick */
     nav a {
-        color: #f4c2c2;
+        position: relative;
+        color: var(--pastel-pink);
         text-decoration: none;
         font-size: 16px;
         font-weight: 700;
         padding: 10px 22px;
-        border: 1px solid rgba(244, 194, 194, 0.25);
         border-radius: 18px;
-        transition: all 0.25s ease;
+        transition: all 0.28s ease;
         cursor: pointer;
         display: inline-block;
-        background: rgba(244, 194, 194, 0.06);
+        background: linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)) padding-box,
+                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
+        border: 2px solid transparent;
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
     }
 
+    /* Subtle inner fill and shadow on hover */
     nav a:hover {
-        background: rgba(244, 194, 194, 0.14);
-        color: #fff;
-        border-color: rgba(244, 194, 194, 0.45);
-        transform: translateY(-1px);
-        box-shadow: 0 10px 24px rgba(244, 194, 194, 0.12);
+        color: var(--nav-fg);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 6px 18px rgba(0,0,0,0.25);
+        background: linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.06)) padding-box,
+                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
     }
 
+    /* Active link gets a brighter inner fill */
     nav a.active {
-        background: rgba(244, 194, 194, 0.2);
-        color: #fff;
-        border-color: rgba(244, 194, 194, 0.55);
-        box-shadow: 0 10px 24px rgba(244, 194, 194, 0.16);
+        color: var(--nav-fg);
+        background: linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)) padding-box,
+                    conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach), var(--pastel-pink)) border-box;
+        box-shadow: 0 14px 34px rgba(0,0,0,0.5);
+    }
+
+    /* Make outlines slightly thicker on larger screens */
+    @media (min-width: 1200px) {
+        nav a { border-width: 3px; padding: 12px 26px; }
     }
 
     @media (max-width: 768px) {

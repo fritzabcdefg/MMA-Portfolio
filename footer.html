@@ -3,14 +3,26 @@
 </footer>
 
 <style>
+    :root{
+        --pastel-pink: #f4c2c2;
+        --pastel-lavender: #cdb4db;
+        --pastel-mint: #c8f7d6;
+        --pastel-peach: #ffd7c2;
+        --pastel-sky: #cfe9ff;
+    }
+
     footer {
         text-align: center;
         padding: 20px;
-        color: #f4c2c2;
-        border-top: 1px solid rgba(244, 194, 194, 0.2);
+        color: var(--pastel-pink);
         font-size: 12px;
         position: relative;
         z-index: 10;
         background: rgba(0, 0, 0, 0.75);
+        background-clip: padding-box;
+        border-top: 4px solid transparent;
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                          conic-gradient(from 180deg, var(--pastel-pink), var(--pastel-lavender), var(--pastel-mint), var(--pastel-sky), var(--pastel-peach));
+        background-origin: padding-box, border-box;
     }
 </style>
