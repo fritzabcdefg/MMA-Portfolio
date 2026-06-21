@@ -216,51 +216,6 @@
             }
         }
 
-        /* Vintage overlay + retro cursor styles (non-destructive to existing colors/animations) */
-        #vintage-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            mix-blend-mode: overlay;
-            background-image:
-                linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)),
-                repeating-linear-gradient(transparent 0 2px, rgba(0,0,0,0.06) 2px 3px);
-            opacity: 0.9;
-        }
-
-        /* Hide the native cursor so the retro one can be shown; interactive elements still react (we toggle growth on hover via JS)
-           This does not change site colors or element animations. */
-        body { cursor: none; }
-
-        #retro-cursor {
-            position: fixed;
-            width: 10px;
-            height: 22px;
-            background: currentColor;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            pointer-events: none;
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.06);
-            animation: retro-blink 1s steps(1) infinite;
-            opacity: 0.95;
-        }
-
-        @keyframes retro-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        #retro-cursor.interactive {
-            transform: translate(-50%, -50%) scale(1.5);
-            width: 12px;
-            height: 26px;
-            border-radius: 3px;
-        }
-
         #footer-container {
             width: 100%;
         }
@@ -279,8 +234,6 @@
 </head>
 <body>
     <div id="header-container"></div>
-    <div id="vintage-overlay" aria-hidden="true"></div>
-    <div id="retro-cursor" aria-hidden="true"></div>
     <container>
 
         <div class="content">
@@ -326,51 +279,6 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             });
-
-        // Retro cursor follower: lightweight, non-destructive, uses currentColor so it doesn't change site palette
-        (function(){
-            const cursor = document.getElementById('retro-cursor');
-            if(!cursor) return;
-
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
-            let posX = mouseX;
-            let posY = mouseY;
-
-            const lerp = (a, b, n) => (1 - n) * a + n * b;
-
-            function onPointerMove(e){
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            }
-
-            // Make interactive elements enlarge the cursor slightly
-            const interactiveSelector = 'a, button, .cta-button, .card-link';
-            function bindInteractiveHover(){
-                document.querySelectorAll(interactiveSelector).forEach(el => {
-                    el.addEventListener('pointerenter', () => cursor.classList.add('interactive'));
-                    el.addEventListener('pointerleave', () => cursor.classList.remove('interactive'));
-                });
-            }
-
-            window.addEventListener('pointermove', onPointerMove, {passive:true});
-            window.addEventListener('resize', () => {
-                mouseX = Math.min(mouseX, window.innerWidth);
-                mouseY = Math.min(mouseY, window.innerHeight);
-            });
-
-            function animate(){
-                posX = lerp(posX, mouseX, 0.18);
-                posY = lerp(posY, mouseY, 0.18);
-                cursor.style.left = posX + 'px';
-                cursor.style.top = posY + 'px';
-                requestAnimationFrame(animate);
-            }
-
-            // Initial bind and start
-            bindInteractiveHover();
-            requestAnimationFrame(animate);
-        })();
     </script>
 </body>
 </html>
