@@ -313,40 +313,29 @@ function switchCelestialBody(groupId, direction) {
     const bodies = celestialBodies[groupId];
     if (!bodies) return;
 
-    // Find current body by checking video src
-    const videoEl = document.getElementById(`${groupId}-video`);
-    const currentSrc = videoEl.src;
+    // Get the carousel container to track current index with data attribute
+    const carouselContainer = document.getElementById(`${groupId}-carousel`);
+    if (!carouselContainer) {
+        console.error(`Carousel container not found for ${groupId}`);
+        return;
+    }
+
+    // Get current index from data attribute, default to 0
+    let currentIndex = parseInt(carouselContainer.dataset.currentIndex || '0', 10);
     
-    console.log(`🔄 Switching ${groupId} direction: ${direction}`);
-    console.log(`Current src from video element: "${currentSrc}"`);
-    
-    // Remove query params for matching
-    const currentSrcClean = currentSrc.split('?')[0];
-    const currentFilename = currentSrcClean.split('/').pop();
-    
-    console.log(`Current filename: "${currentFilename}"`);
-    console.log(`Available bodies:`, bodies.map(b => ({ name: b.name, video: b.video })));
-    
-    // Find which body we're currently on by exact filename match
-    let currentIndex = bodies.findIndex(body => {
-        const bodySrc = body.video.split('?')[0];
-        const bodyFilename = bodySrc.split('/').pop();
-        console.log(`  Comparing "${currentFilename}" === "${bodyFilename}" ? ${currentFilename === bodyFilename}`);
-        return currentFilename === bodyFilename;
-    });
-    
-    console.log(`Found currentIndex: ${currentIndex}`);
-    
-    if (currentIndex === -1) currentIndex = 0;
+    console.log(`🔄 Switching ${groupId} - Current index: ${currentIndex}, Direction: ${direction}`);
 
     // Calculate next index with proper wrapping
     let nextIndex = currentIndex + direction;
     if (nextIndex >= bodies.length) nextIndex = 0;
     if (nextIndex < 0) nextIndex = bodies.length - 1;
 
+    console.log(`  New index: ${nextIndex} (${bodies[nextIndex].name})`);
+
     const nextBody = bodies[nextIndex];
     
     // Update video
+    const videoEl = document.getElementById(`${groupId}-video`);
     videoEl.src = nextBody.video;
     videoEl.currentTime = 0;
     videoEl.load();
@@ -379,6 +368,11 @@ function switchCelestialBody(groupId, direction) {
 
     // Update indicator
     document.getElementById(`${groupId}-current`).textContent = nextBody.name;
+
+    // Store the new index in data attribute
+    carouselContainer.dataset.currentIndex = nextIndex;
+
+    console.log(`  Updated! Now showing: ${nextBody.name}`);
 
     // Enable both buttons for cycling
     const prevBtn = document.getElementById(`${groupId}-prev`);
