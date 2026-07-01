@@ -353,6 +353,39 @@
             text-align: center;
         }
 
+        .path-indicator {
+            position: absolute;
+            right: -240px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(205,180,219,0.12);
+            border: 1px solid rgba(205,180,219,0.25);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: var(--pastel-pink);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+
+        .project-item:hover .path-indicator {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .path-indicator {
+                right: auto;
+                left: -240px;
+                font-size: 10px;
+                padding: 8px 12px;
+            }
+        }
+
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -416,7 +449,7 @@
                 <h1>3D ANIMATION</h1>
                 <div class="section">
                     <h2>SOLAR SYSTEM</h2>
-                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/t-lq8-7wyOA?si=XMDU9gtF_Y-4yl4C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/RBtkjZF71xg?si=C2B4_fGIqj4-lTTr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="section">
                     <h2>Planet Overview</h2>
@@ -480,10 +513,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="earth-moon-prev" onclick="switchCelestialBody('earth-moon', -1)">❮</button>
                             <div class="carousel-indicator"><span id="earth-moon-current">Earth</span></div>
                             <button class="carousel-button" id="earth-moon-next" onclick="switchCelestialBody('earth-moon', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="earth-moon-video" src="videos/Earth.mkv" loop muted controls></video>
@@ -502,10 +536,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="mars-prev" onclick="switchCelestialBody('mars', -1)">❮</button>
                             <div class="carousel-indicator"><span id="mars-current">Mars</span></div>
                             <button class="carousel-button" id="mars-next" onclick="switchCelestialBody('mars', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="mars-video" src="videos/Mars.mkv" loop muted controls></video>
@@ -524,10 +559,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="jupiter-prev" onclick="switchCelestialBody('jupiter', -1)">❮</button>
                             <div class="carousel-indicator"><span id="jupiter-current">Jupiter</span></div>
                             <button class="carousel-button" id="jupiter-next" onclick="switchCelestialBody('jupiter', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="jupiter-video" src="videos/Jupiter.mkv" loop muted controls></video>
@@ -546,10 +582,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="saturn-prev" onclick="switchCelestialBody('saturn', -1)">❮</button>
                             <div class="carousel-indicator"><span id="saturn-current">Saturn</span></div>
                             <button class="carousel-button" id="saturn-next" onclick="switchCelestialBody('saturn', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="saturn-video" src="videos/Saturn.mkv" loop muted controls></video>
@@ -568,10 +605,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="uranus-prev" onclick="switchCelestialBody('uranus', -1)">❮</button>
                             <div class="carousel-indicator"><span id="uranus-current">Uranus</span></div>
                             <button class="carousel-button" id="uranus-next" onclick="switchCelestialBody('uranus', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="uranus-video" src="videos/Uranus.mkv" loop muted controls></video>
@@ -590,10 +628,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="neptune-prev" onclick="switchCelestialBody('neptune', -1)">❮</button>
                             <div class="carousel-indicator"><span id="neptune-current">Neptune</span></div>
                             <button class="carousel-button" id="neptune-next" onclick="switchCelestialBody('neptune', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="neptune-video" src="videos/Neptune.mkv" loop muted controls></video>
@@ -612,10 +651,11 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="carousel-container" style="margin-bottom: 12px;">
+                        <div class="carousel-container" style="margin-bottom: 12px; position: relative;">
                             <button class="carousel-button" id="pluto-prev" onclick="switchCelestialBody('pluto', -1)">❮</button>
                             <div class="carousel-indicator"><span id="pluto-current">Pluto</span></div>
                             <button class="carousel-button" id="pluto-next" onclick="switchCelestialBody('pluto', 1)">❯</button>
+                            <div class="path-indicator">C:\MMA Website\MMA-Portfolio\videos\Moon Finals</div>
                         </div>
                         <div class="planet-row">
                             <video class="planet-video" id="pluto-video" src="videos/Pluto.mkv" loop muted controls></video>
