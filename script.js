@@ -316,21 +316,16 @@ function switchCelestialBody(groupId, direction) {
     // Get the carousel container to track current index with data attribute
     const carouselContainer = document.getElementById(`${groupId}-carousel`);
     if (!carouselContainer) {
-        console.error(`Carousel container not found for ${groupId}`);
         return;
     }
 
     // Get current index from data attribute, default to 0
     let currentIndex = parseInt(carouselContainer.dataset.currentIndex || '0', 10);
-    
-    console.log(`🔄 Switching ${groupId} - Current index: ${currentIndex}, Direction: ${direction}`);
 
     // Calculate next index with proper wrapping
     let nextIndex = currentIndex + direction;
     if (nextIndex >= bodies.length) nextIndex = 0;
     if (nextIndex < 0) nextIndex = bodies.length - 1;
-
-    console.log(`  New index: ${nextIndex} (${bodies[nextIndex].name})`);
 
     const nextBody = bodies[nextIndex];
     
@@ -371,8 +366,6 @@ function switchCelestialBody(groupId, direction) {
 
     // Store the new index in data attribute
     carouselContainer.dataset.currentIndex = nextIndex;
-
-    console.log(`  Updated! Now showing: ${nextBody.name}`);
 
     // Enable both buttons for cycling
     const prevBtn = document.getElementById(`${groupId}-prev`);
