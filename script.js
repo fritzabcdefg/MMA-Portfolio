@@ -317,16 +317,25 @@ function switchCelestialBody(groupId, direction) {
     const videoEl = document.getElementById(`${groupId}-video`);
     const currentSrc = videoEl.src;
     
+    console.log(`🔄 Switching ${groupId} direction: ${direction}`);
+    console.log(`Current src from video element: "${currentSrc}"`);
+    
     // Remove query params for matching
     const currentSrcClean = currentSrc.split('?')[0];
     const currentFilename = currentSrcClean.split('/').pop();
+    
+    console.log(`Current filename: "${currentFilename}"`);
+    console.log(`Available bodies:`, bodies.map(b => ({ name: b.name, video: b.video })));
     
     // Find which body we're currently on by exact filename match
     let currentIndex = bodies.findIndex(body => {
         const bodySrc = body.video.split('?')[0];
         const bodyFilename = bodySrc.split('/').pop();
+        console.log(`  Comparing "${currentFilename}" === "${bodyFilename}" ? ${currentFilename === bodyFilename}`);
         return currentFilename === bodyFilename;
     });
+    
+    console.log(`Found currentIndex: ${currentIndex}`);
     
     if (currentIndex === -1) currentIndex = 0;
 
