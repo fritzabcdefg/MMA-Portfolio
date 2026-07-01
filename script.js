@@ -313,16 +313,19 @@ function switchCelestialBody(groupId, direction) {
     const bodies = celestialBodies[groupId];
     if (!bodies) return;
 
-    // Find current body by checking video src more robustly
+    // Find current body by checking video src
     const videoEl = document.getElementById(`${groupId}-video`);
     const currentSrc = videoEl.src;
     
     // Remove query params for matching
     const currentSrcClean = currentSrc.split('?')[0];
+    const currentFilename = currentSrcClean.split('/').pop();
     
+    // Find which body we're currently on by exact filename match
     let currentIndex = bodies.findIndex(body => {
-        const bodySrcClean = body.video.split('?')[0];
-        return currentSrcClean.includes(bodySrcClean.split('/').pop());
+        const bodySrc = body.video.split('?')[0];
+        const bodyFilename = bodySrc.split('/').pop();
+        return currentFilename === bodyFilename;
     });
     
     if (currentIndex === -1) currentIndex = 0;
