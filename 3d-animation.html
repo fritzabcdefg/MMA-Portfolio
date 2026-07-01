@@ -306,6 +306,53 @@
             font-weight: 700;
         }
 
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .carousel-button {
+            background: rgba(205,180,219,0.14);
+            border: 1px solid rgba(205,180,219,0.25);
+            color: var(--pastel-pink);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .carousel-button:hover {
+            background: rgba(205,180,219,0.28);
+            border-color: rgba(205,180,219,0.5);
+            transform: scale(1.1);
+        }
+
+        .carousel-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .carousel-button:disabled:hover {
+            transform: scale(1);
+            background: rgba(205,180,219,0.14);
+        }
+
+        .carousel-indicator {
+            color: var(--pastel-peach);
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: center;
+        }
+
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -383,7 +430,7 @@
                     </div>
                     <div class="project-item">
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Sun.mkv" loop autoplay muted></video>
+                            <video class="planet-video" src="videos/Sun.mkv" loop muted controls></video>
                             <div class="planet-info">
                                 <div>
                                     <div class="project-title">Sun</div>
@@ -400,7 +447,7 @@
                     </div>
                     <div class="project-item">
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Mercury.mkv" loop autoplay muted></video>
+                            <video class="planet-video" src="videos/Mercury.mkv" loop muted controls></video>
                             <div class="planet-info">
                                 <div>
                                     <div class="project-title">Mercury</div>
@@ -417,7 +464,7 @@
                     </div>
                     <div class="project-item">
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Venus.mkv" loop autoplay muted></video>
+                            <video class="planet-video" src="videos/Venus.mkv" loop muted controls></video>
                             <div class="planet-info">
                                 <div>
                                     <div class="project-title">Venus</div>
@@ -433,9 +480,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="earth-moon-prev" onclick="switchCelestialBody('earth-moon', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="earth-moon-current">Earth</span></div>
+                            <button class="carousel-button" id="earth-moon-next" onclick="switchCelestialBody('earth-moon', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Earth.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="earth-moon-video" src="videos/Earth.mkv" loop muted controls></video>
+                            <div class="planet-info" id="earth-moon-info">
                                 <div>
                                     <div class="project-title">Earth</div>
                                     <div class="project-desc">Our home planet, with oceans, landmasses, and dynamic weather systems.</div>
@@ -450,26 +502,14 @@
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="planet-row">
-                            <video class="planet-video" src="videos/Moon.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
-                                <div>
-                                    <div class="project-title">Moon</div>
-                                    <div class="project-desc">Earth's natural satellite, with cratered highlands and a thin exosphere.</div>
-                                </div>
-                                <ul class="planet-data">
-                                    <li><strong>Age:</strong> 4.51 billion years</li>
-                                    <li><strong>Revolution:</strong> 27.3 Earth days</li>
-                                    <li><strong>Orbital Period:</strong> 27.3 Earth days</li>
-                                    <li><strong>Distance from Earth:</strong> 384,400 km</li>
-                                </ul>
-                            </div>
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="mars-prev" onclick="switchCelestialBody('mars', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="mars-current">Mars</span></div>
+                            <button class="carousel-button" id="mars-next" onclick="switchCelestialBody('mars', 1)">❯</button>
                         </div>
-                    </div>
-                    <div class="project-item">
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Mars.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="mars-video" src="videos/Mars.mkv" loop muted controls></video>
+                            <div class="planet-info" id="mars-info">
                                 <div>
                                     <div class="project-title">Mars</div>
                                     <div class="project-desc">The red planet, known for its dusty terrain, ancient riverbeds, and polar ice caps.</div>
@@ -484,9 +524,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="jupiter-prev" onclick="switchCelestialBody('jupiter', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="jupiter-current">Jupiter</span></div>
+                            <button class="carousel-button" id="jupiter-next" onclick="switchCelestialBody('jupiter', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Jupiter.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="jupiter-video" src="videos/Jupiter.mkv" loop muted controls></video>
+                            <div class="planet-info" id="jupiter-info">
                                 <div>
                                     <div class="project-title">Jupiter</div>
                                     <div class="project-desc">A gas giant with swirling storms, including the Great Red Spot, and many moons.</div>
@@ -501,9 +546,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="saturn-prev" onclick="switchCelestialBody('saturn', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="saturn-current">Saturn</span></div>
+                            <button class="carousel-button" id="saturn-next" onclick="switchCelestialBody('saturn', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Saturn.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="saturn-video" src="videos/Saturn.mkv" loop muted controls></video>
+                            <div class="planet-info" id="saturn-info">
                                 <div>
                                     <div class="project-title">Saturn</div>
                                     <div class="project-desc">Famous for its ring system, Saturn is a gas giant with icy rings and a striking appearance.</div>
@@ -518,9 +568,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="uranus-prev" onclick="switchCelestialBody('uranus', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="uranus-current">Uranus</span></div>
+                            <button class="carousel-button" id="uranus-next" onclick="switchCelestialBody('uranus', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Uranus.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="uranus-video" src="videos/Uranus.mkv" loop muted controls></video>
+                            <div class="planet-info" id="uranus-info">
                                 <div>
                                     <div class="project-title">Uranus</div>
                                     <div class="project-desc">An ice giant that rotates on its side, with a faint ring system and cold, blue atmosphere.</div>
@@ -535,9 +590,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="neptune-prev" onclick="switchCelestialBody('neptune', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="neptune-current">Neptune</span></div>
+                            <button class="carousel-button" id="neptune-next" onclick="switchCelestialBody('neptune', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Neptune.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="neptune-video" src="videos/Neptune.mkv" loop muted controls></video>
+                            <div class="planet-info" id="neptune-info">
                                 <div>
                                     <div class="project-title">Neptune</div>
                                     <div class="project-desc">A distant ice giant with strong winds and a deep blue atmosphere, farthest from the Sun.</div>
@@ -552,9 +612,14 @@
                         </div>
                     </div>
                     <div class="project-item">
+                        <div class="carousel-container" style="margin-bottom: 12px;">
+                            <button class="carousel-button" id="pluto-prev" onclick="switchCelestialBody('pluto', -1)">❮</button>
+                            <div class="carousel-indicator"><span id="pluto-current">Pluto</span></div>
+                            <button class="carousel-button" id="pluto-next" onclick="switchCelestialBody('pluto', 1)">❯</button>
+                        </div>
                         <div class="planet-row">
-                            <video class="planet-video" src="videos/Pluto.mkv" loop autoplay muted></video>
-                            <div class="planet-info">
+                            <video class="planet-video" id="pluto-video" src="videos/Pluto.mkv" loop muted controls></video>
+                            <div class="planet-info" id="pluto-info">
                                 <div>
                                     <div class="project-title">Pluto</div>
                                     <div class="project-desc">A small icy world in the Kuiper Belt, rich in nitrogen ice and distant dwarf planet charm.</div>
