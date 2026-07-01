@@ -313,6 +313,8 @@ function switchCelestialBody(groupId, direction) {
     
     // Update video
     videoEl.src = nextBody.video;
+    videoEl.currentTime = 0;
+    videoEl.load();
 
     // Update info
     const infoEl = document.getElementById(`${groupId}-info`);
