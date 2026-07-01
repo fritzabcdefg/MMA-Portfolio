@@ -380,3 +380,36 @@ function switchCelestialBody(groupId, direction) {
     prevBtn.disabled = false;
     nextBtn.disabled = false;
 }
+
+// Initialize all carousels with descriptions on page load
+function initializeCarousels() {
+    for (const groupId in celestialBodies) {
+        const bodies = celestialBodies[groupId];
+        const firstBody = bodies[0];
+        const infoEl = document.getElementById(`${groupId}-info`);
+        
+        if (!infoEl) continue;
+        
+        // Add extended description if it exists
+        if (firstBody.extra) {
+            const descEl = infoEl.querySelector('.project-desc');
+            let extraEl = infoEl.querySelector('.planet-description-extra');
+            
+            if (!extraEl) {
+                extraEl = document.createElement('div');
+                extraEl.className = 'planet-description-extra';
+                descEl.insertAdjacentElement('afterend', extraEl);
+            }
+            extraEl.textContent = firstBody.extra;
+        }
+        
+        // Initialize carousel index
+        const carouselContainer = document.getElementById(`${groupId}-carousel`);
+        if (carouselContainer) {
+            carouselContainer.dataset.currentIndex = '0';
+        }
+    }
+}
+
+// Initialize carousels when DOM is ready
+document.addEventListener('DOMContentLoaded', initializeCarousels);
