@@ -28,16 +28,28 @@
             position: relative;
         }
 
+        /* 🌟 Enhanced Star Field & Ambient Space Background Layer */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background-image:
+                /* Vintage Pixel Starfield Matrix */
+                radial-gradient(1px 1px at 12% 18%, #ffffff 100%, transparent),
+                radial-gradient(1.5px 1.5px at 28% 45%, var(--pastel-sky) 100%, transparent),
+                radial-gradient(1px 1px at 45% 12%, #ffffff 100%, transparent),
+                radial-gradient(2px 2px at 72% 65%, var(--pastel-lavender) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 88% 28%, var(--pastel-peach) 100%, transparent),
+                radial-gradient(1px 1px at 22% 78%, #ffffff 100%, transparent),
+                radial-gradient(2px 2px at 64% 88%, var(--pastel-mint) 100%, transparent),
+                radial-gradient(1px 1px at 92% 74%, #ffffff 100%, transparent),
+                /* Core Dynamic Background Ambient Color Orbs */
                 radial-gradient(circle at 15% 20%, rgba(205,180,219,0.14) 0%, transparent 18%),
                 radial-gradient(circle at 82% 30%, rgba(200,247,214,0.08) 0%, transparent 16%),
                 radial-gradient(circle at 50% 80%, rgba(207,233,255,0.1) 0%, transparent 22%);
             pointer-events: none;
             z-index: 0;
+            background-size: 100% 100%;
         }
 
         body::after {
@@ -81,39 +93,43 @@
             animation: slideIn 0.8s ease-out;
         }
 
+       /* 📼 Completely Shadowless Main Header (Strictly Zero Blur/Shadow) */
         h1 {
-            font-size: 72px;
+            font-size: 64px;
             color: var(--pastel-lavender);
             margin-bottom: 40px;
             margin-top: 20px;
-            text-shadow: 0 0 30px rgba(205,180,219,0.4), 0 0 60px rgba(205,180,219,0.2);
+            
+            /* Strong overrides to completely kill text shadows, box shadows, and drop-shadow filters */
+            text-shadow: none !important; 
+            filter: none !important;
+            box-shadow: none !important;
+
             text-align: center;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-weight: 900;
             text-transform: uppercase;
-            animation: pastelPulse 10s ease-in-out infinite alternate;
+            animation: headerPulse 10s ease-in-out infinite alternate; /* Uses its own shadowless loop */
             position: relative;
             padding: 20px 0;
         }
 
-        h1::before {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            max-width: 600px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--pastel-pink), transparent);
+        /* 🧼 Dedicated Clean Color-Shifting Loop (Guarantees zero shadow reinjection) */
+        @keyframes headerPulse {
+            0% { color: var(--pastel-lavender); text-shadow: none !important; filter: none !important; }
+            25% { color: var(--pastel-peach);    text-shadow: none !important; filter: none !important; }
+            50% { color: var(--pastel-sky);      text-shadow: none !important; filter: none !important; }
+            75% { color: var(--pastel-mint);     text-shadow: none !important; filter: none !important; }
+            100% { color: var(--pastel-pink);    text-shadow: none !important; filter: none !important; }
         }
 
         .section {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(8, 4, 12, 0.75);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(205,180,219,0.18);
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
             transition: all 0.4s ease;
             border-radius: 24px;
         }
@@ -279,14 +295,6 @@
             }
         }
 
-        @keyframes pastelPulse {
-            0% { color: var(--pastel-lavender); text-shadow: 0 0 20px rgba(205,180,219,0.28); }
-            25% { color: var(--pastel-peach); text-shadow: 0 0 20px rgba(255,215,200,0.35); }
-            50% { color: var(--pastel-sky); text-shadow: 0 0 20px rgba(207,233,255,0.35); }
-            75% { color: var(--pastel-mint); text-shadow: 0 0 20px rgba(200,247,214,0.35); }
-            100% { color: var(--pastel-pink); text-shadow: 0 0 20px rgba(244,194,194,0.35); }
-        }
-
         @keyframes drift {
             0%, 100% {
                 transform: translateY(0) rotate(0deg);
@@ -315,9 +323,86 @@
 
             .tutorial-grid { grid-template-columns: repeat(1, 1fr); }
         }
+        /* ==========================================================================
+           📺 RETRO CRT TV SCREEN EFFECT (EXCLUSIVE TO ROTOSCOPE PAGE)
+           ========================================================================== */
+        
+        /* 1. Base Scanline & Vignette Overlay Layer */
+        body.theme-retro::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            inset: 0;
+            /* Combines an old-school outer tube vignette with tight pixel scanlines */
+            background: 
+                radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.55) 100%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 100%, 100% 4px;
+            z-index: 9999; /* Standard backdrop layer placement below elements at 10000+ */
+            pointer-events: none; /* Allows user clicks to completely pass through safely */
+            animation: crtFlicker 0.18s infinite;
+        }
+
+        /* Ambient retro monitor phosphor flicker simulation */
+        @keyframes crtFlicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        /* 2. Stacking Context Flattening Neutralizer */
+        body.theme-retro .section,
+        body.theme-retro .weekly-card,
+        body.theme-retro .tutorial-step {
+            backdrop-filter: none !important; /* Removes modern glass blur effects that swallow z-indexing */
+            transform: none !important;       /* Removes hardware transforms that capture inner items */
+            filter: none !important;
+        }
+
+        /* 3. Elevate YouTube Videos Completely Clear of the Scanlines */
+        body.theme-retro iframe,
+        body.theme-retro .responsive-iframe {
+            position: relative;
+            z-index: 10000; /* Pushes the video canvas 1 layer over the 9999 CRT scanlines */
+            border: 2px solid var(--pastel-mint) !important; /* Sharp matching arcade frame accent */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9) !important; /* Distinct dark drop cutout */
+        }
+        h1, h2, h3, 
+        nav, nav a, .nav-link, 
+        .header, .title,
+        [class*="header"], [class*="title"] {
+            text-shadow: none !important;
+            filter: none !important;
+            -webkit-filter: none !important;
+        }
+
+        /* Neutralizes any shadow injections inside active color-pulsing loops */
+        @keyframes pastelPulse {
+            0% { text-shadow: none !important; filter: none !important; }
+            25% { text-shadow: none !important; filter: none !important; }
+            50% { text-shadow: none !important; filter: none !important; }
+            75% { text-shadow: none !important; filter: none !important; }
+            100% { text-shadow: none !important; filter: none !important; }
+        }
+
+        @keyframes headerPulse {
+            0% { text-shadow: none !important; filter: none !important; }
+            25% { text-shadow: none !important; filter: none !important; }
+            50% { text-shadow: none !important; filter: none !important; }
+            75% { text-shadow: none !important; filter: none !important; }
+            100% { text-shadow: none !important; filter: none !important; }
+        }
+
+        @keyframes navPulse {
+            0% { text-shadow: none !important; filter: none !important; }
+            25% { text-shadow: none !important; filter: none !important; }
+            50% { text-shadow: none !important; filter: none !important; }
+            75% { text-shadow: none !important; filter: none !important; }
+            100% { text-shadow: none !important; filter: none !important; }
+        }
     </style>
 </head>
-<body>
+<body class="theme-retro">
     <div id="header-container"></div>
     <container>
 

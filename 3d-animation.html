@@ -462,9 +462,67 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .theme-space {
+            background: radial-gradient(circle at center, #0b031a 0%, #030107 70%, #000000 100%); /* Deep space */
+        }
+
+        /* Stardust Background Overlay */
+        .theme-space::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.5), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 150px, #cfe9ff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Futuristic Floating Glass Cards */
+        .theme-space .section {
+            background: rgba(15, 10, 30, 0.45) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(207, 233, 255, 0.15) !important;
+            border-radius: 24px;
+            box-shadow: 0 0 40px rgba(205, 180, 219, 0.05);
+        }
+
+        .theme-space .section:hover {
+            border-color: var(--pastel-sky) !important;
+            box-shadow: 0 0 30px rgba(207, 233, 255, 0.2);
+        }
+
+        /* Modern Celestial Headers */
+        .theme-space h1 {
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 12px;
+            font-weight: 300; /* Sleek, thin space agency typography */
+            text-transform: uppercase;
+        }
+        /* --- SPACE THEME BACKGROUND OVERRIDE --- */
+        body.theme-space {
+            /* 1. We mix a dark gradient overlay so your white/pastel text stays highly readable over the bright stars */
+            background: linear-gradient(rgba(10, 5, 22, 0.4), rgba(3, 1, 5, 0.75)), 
+                        url('assets/8k_stars_milky_way.jpg');
+            
+            /* 2. Scale the 8K image perfectly to fill the screen without stretching */
+            background-size: cover;
+            
+            /* 3. Center the beautiful celestial cluster */
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* 4. 'fixed' keeps the stars static in place while your project cards scroll over it */
+            background-attachment: fixed; 
+        }
     </style>
 </head>
-<body>
+<body class="theme-space">
     <div id="header-container"></div>
     <container>
 
@@ -703,6 +761,31 @@
                     <div class="tech-tags" style="display:inline-block;">
                         <span class="tag">Blender</span>
                         <span class="tag">Capcut</span>
+                    </div>
+
+                    <h2 style="margin-top: 40px; margin-bottom: 20px;">Project Resources</h2>
+                    <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; max-width: 700px; margin: 0 auto;">
+                        
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%;">
+                            <a href="https://drive.google.com/drive/folders/1a3KeKIjmuXVIq-HNMYOpRrzly3IzOy7D?usp=drive_link" target="_blank" style="display: inline-block; background: rgba(207,233,255,0.12); color: var(--pastel-sky); padding: 12px 24px; font-size: 14px; border: 1px solid rgba(207,233,255,0.25); font-weight: 700; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.5px;">
+                                📂 Blend Files (Google Drive)
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/1-3MwnRsrY5eIzir1DuhSnQ8lkLasJnbd?usp=drive_link" target="_blank" style="display: inline-block; background: rgba(255,215,200,0.12); color: var(--pastel-peach); padding: 12px 24px; font-size: 14px; border: 1px solid rgba(255,215,200,0.25); font-weight: 700; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.5px;">
+                                📜 Python Scripts (Google Drive)
+                            </a>
+                        </div>
+                        
+                        <div style="margin-top: 10px; width: 100%;">
+                            <div style="color: var(--pastel-pink); font-size: 13px; margin-bottom: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Texture Sources</div>
+                            <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                                <a href="https://www.solarsystemscope.com/textures/" target="_blank" style="color: var(--pastel-mint); font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px dashed rgba(200,247,214,0.4); padding-bottom: 2px; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--pastel-mint)'" onmouseout="this.style.borderColor='rgba(200,247,214,0.4)'">Solar System Scope</a>
+                                <span style="color: rgba(255,255,255,0.15); font-size: 12px;">•</span>
+                                <a href="http://www.celestiamotherlode.net/" target="_blank" style="color: var(--pastel-mint); font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px dashed rgba(200,247,214,0.4); padding-bottom: 2px; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--pastel-mint)'" onmouseout="this.style.borderColor='rgba(200,247,214,0.4)'">Celestia Motherlode</a>
+                                <span style="color: rgba(255,255,255,0.15); font-size: 12px;">•</span>
+                                <a href="https://3d-asteroids.space/" target="_blank" style="color: var(--pastel-mint); font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px dashed rgba(200,247,214,0.4); padding-bottom: 2px; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--pastel-mint)'" onmouseout="this.style.borderColor='rgba(200,247,214,0.4)'">3D Asteroids</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

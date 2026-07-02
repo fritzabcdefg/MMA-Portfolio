@@ -1,14 +1,14 @@
 <nav>
     <ul>
         <li><a href="home.html" class="nav-link">HOME</a></li>
-        <li><a href="3d-animation.html" class="nav-link">3D ANIMATION</a></li>
-        <li><a href="rotoscope-animation.html" class="nav-link">ROTOSCOPE ANIMATION</a></li>
+        <li><a href="3d-animation.html" class="nav-link nav-3d">3D ANIMATION</a></li>
+        <li><a href="rotoscope-animation.html" class="nav-link nav-roto">ROTOSCOPE ANIMATION</a></li>
         <li><a href="about.html" class="nav-link">ABOUT</a></li>
     </ul>
 </nav>
 
 <style>
-    :root{
+    :root {
         --pastel-pink: #f4c2c2;
         --pastel-lavender: #cdb4db;
         --pastel-mint: #c8f7d6;
@@ -18,7 +18,7 @@
         --nav-fg: rgba(255,255,255,0.95);
     }
 
-    /* Navigation Menu */
+    /* Navigation Menu Base */
     nav {
         background: var(--nav-bg);
         border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -70,7 +70,51 @@
         100% { background: #f4c2c2; box-shadow: 0 10px 22px rgba(244,194,194,0.25); }
     }
 
-    /* Make outlines slightly thicker on larger screens */
+    /* --- 👽 ALIEN & 📺 TV ANTENNA DECORATIONS --- */
+    
+    /* 3D Animation: Space Alien Antenna Vibe */
+    nav a.nav-3d::before {
+        content: "┵👽┲";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        font-size: 11px;
+        color: var(--pastel-sky);
+        letter-spacing: -0.5px;
+        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav a.nav-3d:hover::before,
+    nav a.nav-3d.active::before {
+        top: -21px;
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    /* Rotoscope Animation: Retro TV Rabbit Ear Antennas */
+    nav a.nav-roto::before {
+        content: "＼／";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        font-size: 12px;
+        font-weight: 900;
+        color: var(--pastel-peach);
+        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav a.nav-roto:hover::before,
+    nav a.nav-roto.active::before {
+        top: -16px;
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    /* --- RESPONSIVE BOUNDARIES --- */
     @media (min-width: 1200px) {
         nav a { border-width: 3px; padding: 12px 26px; }
     }
@@ -81,28 +125,62 @@
             padding: 10px 18px;
             border-radius: 20px;
         }
-
         nav ul {
             gap: 16px;
         }
+        /* Slightly adjust antenna spacing on mobile devices */
+        nav a.nav-3d:hover::before, nav a.nav-3d.active::before { top: -19px; }
+        nav a.nav-roto:hover::before, nav a.nav-roto.active::before { top: -14px; }
+    }
+
+    /* --- SPACE THEME ADJUSTMENTS --- */
+    body.theme-space nav {
+        background: rgba(10, 5, 20, 0.75);
+        border-bottom: 1px solid rgba(207, 233, 255, 0.2);
+        backdrop-filter: blur(20px);
+    }
+    body.theme-space nav a {
+        border-color: rgba(207, 233, 255, 0.3);
+        border-radius: 30px; /* Futuristic pill shape */
+    }
+
+    /* --- RETRO THEME ADJUSTMENTS --- */
+    body.theme-retro nav {
+        background: #0d0214;
+        border-bottom: 3px dashed var(--pastel-pink);
+    }
+    body.theme-retro nav a {
+        border: 2px solid var(--pastel-mint);
+        border-radius: 0px; /* Flat, blocky retro arcade corners */
+        font-family: 'Courier New', Courier, monospace;
+        text-shadow: 2px 2px 0px #000;
+    }
+    body.theme-retro nav a:hover,
+    body.theme-retro nav a.active {
+        background: var(--pastel-mint) !important;
+        color: #000 !important;
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 0px var(--pastel-pink); /* Hard retro drop shadow */
+    }
+    /* Adjust antenna colors specifically to adapt inside retro context */
+    body.theme-retro nav a.nav-roto::before {
+        color: var(--pastel-mint);
+        font-family: 'Segoe UI', sans-serif; /* Keep clear shape geometry */
     }
 </style>
 
 <script>
-    // Set active navigation link based on current page
-    function setActiveNavLink() {
+    function updateActiveNavigation() {
         const links = document.querySelectorAll('nav a.nav-link');
-        const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+        const currentFileName = window.location.pathname.split('/').pop() || 'home.html';
         
         links.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
+            if (link.getAttribute('href') === currentFileName) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
             }
         });
     }
-    
-    // Call on page load
-    document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    document.addEventListener('DOMContentLoaded', updateActiveNavigation);
 </script>
